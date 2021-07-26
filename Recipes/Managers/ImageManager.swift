@@ -13,10 +13,13 @@ class ImageManager {
     static let shared = ImageManager()
     private init() {}
     
-    func getImage(from stringURL: String) -> UIImage {
-        guard let url = URL(string: stringURL) else { return .checkmark}
-        guard let data = try? Data(contentsOf: url) else { return .checkmark} // вставить заглушку!!!!!!
-        guard let image = UIImage(data: data) else { return .checkmark}
+    func getImage(from stringURL: String) -> UIImage? {
+        guard let url = URL(string: stringURL),
+              let data = try? Data(contentsOf: url),
+              let image = UIImage(data: data)
+        else {
+            return UIImage(named: "noImage")
+        }
         return image
     }
 }
