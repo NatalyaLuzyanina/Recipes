@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8CD9EB6EE9ED210A43B48767 /* Pods_Recipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B843249C9590FBE1F191E7A /* Pods_Recipes.framework */; };
+		C17B812626AF177D00F23AD9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C17B812526AF177D00F23AD9 /* .gitignore */; };
 		C1C615E726AEDCBD006D3B11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C615E626AEDCBD006D3B11 /* AppDelegate.swift */; };
 		C1C615E926AEDCBD006D3B11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C615E826AEDCBD006D3B11 /* SceneDelegate.swift */; };
 		C1C615EE26AEDCBD006D3B11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C615EC26AEDCBD006D3B11 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		5B843249C9590FBE1F191E7A /* Pods_Recipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		609AE14E5909FB6AC9D500B6 /* Pods-Recipes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipes.debug.xcconfig"; path = "Target Support Files/Pods-Recipes/Pods-Recipes.debug.xcconfig"; sourceTree = "<group>"; };
 		90512765163E365507C11460 /* Pods-Recipes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipes.release.xcconfig"; path = "Target Support Files/Pods-Recipes/Pods-Recipes.release.xcconfig"; sourceTree = "<group>"; };
+		C17B812526AF177D00F23AD9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C1C615E326AEDCBD006D3B11 /* Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C615E626AEDCBD006D3B11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C615E826AEDCBD006D3B11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,13 +76,13 @@
 				609AE14E5909FB6AC9D500B6 /* Pods-Recipes.debug.xcconfig */,
 				90512765163E365507C11460 /* Pods-Recipes.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		C1C615DA26AEDCBD006D3B11 = {
 			isa = PBXGroup;
 			children = (
+				C17B812526AF177D00F23AD9 /* .gitignore */,
 				C1C615E526AEDCBD006D3B11 /* Recipes */,
 				C1C615E426AEDCBD006D3B11 /* Products */,
 				AA3032A39D97EB7B6D137014 /* Pods */,
@@ -226,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C17B812626AF177D00F23AD9 /* .gitignore in Resources */,
 				C1C615F326AEDCC0006D3B11 /* LaunchScreen.storyboard in Resources */,
 				C1C615F026AEDCC0006D3B11 /* Assets.xcassets in Resources */,
 				C1C615EE26AEDCBD006D3B11 /* Main.storyboard in Resources */,
