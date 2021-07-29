@@ -159,7 +159,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" id="Z2R-YU-mI0">
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="Z2R-YU-mI0">
                             <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
@@ -182,6 +182,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Dish type" id="Ms4-hA-rCM"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Z2R-YU-mI0" id="2qX-fk-UUG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8jV-Gg-XH3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -254,9 +257,16 @@
                                     </scrollView>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="sUy-1w-aey">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6x-vb-A2m">
+                                <rect key="frame" x="16" y="44" width="21.5" height="30"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="chevron.backward" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="29"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButton" destination="jlT-Sw-vVx" eventType="touchUpInside" id="38B-Ja-gPE"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zog-ww-uzd">
                                 <rect key="frame" x="362.5" y="44" width="35.5" height="37"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
@@ -269,16 +279,10 @@
                                     <action selector="favoriteButtonPressed:" destination="jlT-Sw-vVx" eventType="touchUpInside" id="Owa-py-7DG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6x-vb-A2m">
-                                <rect key="frame" x="16" y="44" width="21.5" height="30"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="chevron.backward" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="29"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButton" destination="jlT-Sw-vVx" eventType="touchUpInside" id="38B-Ja-gPE"/>
-                                </connections>
-                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="sUy-1w-aey">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hCb-fW-AiV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -286,16 +290,18 @@
                             <constraint firstItem="zog-ww-uzd" firstAttribute="top" secondItem="hCb-fW-AiV" secondAttribute="top" id="2oB-mL-vCB"/>
                             <constraint firstItem="92o-mU-pIi" firstAttribute="leading" secondItem="hCb-fW-AiV" secondAttribute="leading" constant="16" id="3lh-Dw-Z0C"/>
                             <constraint firstItem="hCb-fW-AiV" firstAttribute="bottom" secondItem="92o-mU-pIi" secondAttribute="bottom" constant="16" id="6XA-bL-vp6"/>
+                            <constraint firstItem="hCb-fW-AiV" firstAttribute="bottom" secondItem="sUy-1w-aey" secondAttribute="bottom" id="C9z-Im-c6j"/>
                             <constraint firstItem="hCb-fW-AiV" firstAttribute="trailing" secondItem="zog-ww-uzd" secondAttribute="trailing" constant="16" id="EgT-NY-hei"/>
                             <constraint firstItem="ifA-d6-Oab" firstAttribute="leading" secondItem="jIo-pV-Yw3" secondAttribute="leading" id="Ham-e5-1OC"/>
-                            <constraint firstItem="sUy-1w-aey" firstAttribute="centerY" secondItem="jIo-pV-Yw3" secondAttribute="centerY" id="Nkj-Wk-OYl"/>
                             <constraint firstItem="ifA-d6-Oab" firstAttribute="top" secondItem="jIo-pV-Yw3" secondAttribute="top" id="Qte-ZC-6yi"/>
+                            <constraint firstItem="sUy-1w-aey" firstAttribute="leading" secondItem="hCb-fW-AiV" secondAttribute="leading" id="RCi-oM-ee0"/>
                             <constraint firstItem="x6x-vb-A2m" firstAttribute="top" secondItem="hCb-fW-AiV" secondAttribute="top" id="Tlz-FN-lbh"/>
                             <constraint firstItem="hCb-fW-AiV" firstAttribute="trailing" secondItem="92o-mU-pIi" secondAttribute="trailing" constant="16" id="Vxw-Ro-uFY"/>
                             <constraint firstItem="ifA-d6-Oab" firstAttribute="trailing" secondItem="jIo-pV-Yw3" secondAttribute="trailing" id="a2A-a5-6pz"/>
                             <constraint firstItem="92o-mU-pIi" firstAttribute="top" secondItem="ifA-d6-Oab" secondAttribute="bottom" constant="8" id="tLf-he-lUk"/>
-                            <constraint firstItem="sUy-1w-aey" firstAttribute="centerX" secondItem="jIo-pV-Yw3" secondAttribute="centerX" id="uFv-6X-f9u"/>
+                            <constraint firstItem="hCb-fW-AiV" firstAttribute="trailing" secondItem="sUy-1w-aey" secondAttribute="trailing" id="w1z-AI-d9X"/>
                             <constraint firstItem="x6x-vb-A2m" firstAttribute="leading" secondItem="hCb-fW-AiV" secondAttribute="leading" constant="16" id="wfl-Mc-JId"/>
+                            <constraint firstItem="sUy-1w-aey" firstAttribute="top" secondItem="hCb-fW-AiV" secondAttribute="top" id="y6P-rB-vb0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="PKh-2W-4Ty">

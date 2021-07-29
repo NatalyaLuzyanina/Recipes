@@ -8,6 +8,11 @@
 import UIKit
 import RealmSwift
 
+enum Mark: String {
+    case favorite = "suit.heart.fill"
+    case notFavorite = "heart"
+}
+
 class DetailRecipeViewController: UIViewController {
     
     // MARK: - IB Outlets
@@ -21,16 +26,13 @@ class DetailRecipeViewController: UIViewController {
     
     // MARK: - Public Properties
     var recipe: Recipe!
-    var favoriteRecipes: Results<Recipe>?
    
     // MARK: - Life cycle methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        favoriteRecipes = StorageManager.shared.realm.objects(Recipe.self).filter("id = \(self.recipe.id)")
-      
-        if !(favoriteRecipes?.isEmpty ?? true) {
-            favoriteButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+       
+        if UserDefaults.standard.object(forKey: recipe.title) != nil {
+            setFavoriteButton(Mark.favorite.rawValue)
         }
         getRecipes()
     }
@@ -45,19 +47,25 @@ class DetailRecipeViewController: UIViewController {
         if UserDefaults.standard.object(forKey: recipe.title) == nil {
             UserDefaults.standard.set(recipe.id, forKey: recipe.title)
             StorageManager.shared.save(recipe: [recipe])
-            favoriteButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
-            
+            setFavoriteButton(Mark.favorite.rawValue)
         } else {
-            let favoriteRecipes = StorageManager.shared.realm.objects(Recipe.self).filter("id = \(self.recipe.id)")
-            guard let favoriteRecipe = favoriteRecipes.first else { return }
+            guard let favoriteRecipe = StorageManager.shared.realm.objects(Recipe.self)
+                    .filter("id = \(self.recipe.id)")
+                    .first
+            else { return }
             
             UserDefaults.standard.removeObject(forKey: recipe.title)
             StorageManager.shared.delete(recipe: favoriteRecipe)
-            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            setFavoriteButton(Mark.notFavorite.rawValue)
         }
     }
     
     // MARK: - Private Methods
+    
+    private func setFavoriteButton(_ mark: String) {
+        favoriteButton.setImage(UIImage(systemName: mark), for: .normal)
+    }
+    
     private func getRecipes() {
         
         NetworkManager.shared.fetchRecipe(recipe: recipe) { recipe in
@@ -102,6 +110,5 @@ class DetailRecipeViewController: UIViewController {
         stepsLabel.layer.cornerRadius = 10
         stepsLabel.layer.masksToBounds = true
     }
-    
 }
 

@@ -9,6 +9,8 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     private var recipes: [Recipe]?
     var dishType: Category?
     
@@ -76,6 +78,7 @@ class RecipesTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.recipes = recipes
                 self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         }
     }
