@@ -10,45 +10,54 @@ import RealmSwift
 
 class DetailRecipeViewController: UIViewController {
     
+    // MARK: - IB Outlets
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var ingridientsLabel: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
-
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var favoriteButton: UIButton!
     
+    // MARK: - Public Properties
     var recipe: Recipe!
     var favoriteRecipes: Results<Recipe>?
    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.tintColor = .white
+    // MARK: - Life cycle methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         favoriteRecipes = StorageManager.shared.realm.objects(Recipe.self).filter("id = \(self.recipe.id)")
-        
+      
         if !(favoriteRecipes?.isEmpty ?? true) {
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "suit.heart.fill")
+            favoriteButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
         }
         getRecipes()
     }
     
-    @IBAction func favoriteAction(_ sender: UIBarButtonItem) {
+    // MARK: - IB Actions
+    @IBAction func backButton() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func favoriteButtonPressed(_ sender: UIButton) {
         
-        guard let favoriteRecipes = favoriteRecipes else { return }
-        
-        if favoriteRecipes.isEmpty {
+        if UserDefaults.standard.object(forKey: recipe.title) == nil {
+            UserDefaults.standard.set(recipe.id, forKey: recipe.title)
             StorageManager.shared.save(recipe: [recipe])
-            sender.image = UIImage(systemName: "suit.heart.fill")
+            favoriteButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+            
         } else {
+            let favoriteRecipes = StorageManager.shared.realm.objects(Recipe.self).filter("id = \(self.recipe.id)")
             guard let favoriteRecipe = favoriteRecipes.first else { return }
             
+            UserDefaults.standard.removeObject(forKey: recipe.title)
             StorageManager.shared.delete(recipe: favoriteRecipe)
-            sender.image = UIImage(systemName: "heart")
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
     
+    // MARK: - Private Methods
     private func getRecipes() {
         
         NetworkManager.shared.fetchRecipe(recipe: recipe) { recipe in

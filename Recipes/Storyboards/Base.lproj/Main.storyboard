@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -37,7 +38,7 @@
         <!--Dish types-->
         <scene sceneID="1ic-2N-6hI">
             <objects>
-                <collectionViewController id="ckm-Bc-nvJ" customClass="FoodCategoriesCollectionVC" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="ckm-Bc-nvJ" customClass="FoodCategoriesCollectionVC" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Qe8-1U-JXo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +50,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FoodCell" id="5m4-X1-vII" customClass="FoodCategoryCell" customModule="myRecipes" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FoodCell" id="5m4-X1-vII" customClass="FoodCategoryCell" customModule="Recipes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="177" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jpn-ge-oqe">
@@ -116,12 +117,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K20-tJ-cfu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1045" y="92"/>
+            <point key="canvasLocation" x="710" y="92"/>
         </scene>
         <!--Favourite recipes-->
         <scene sceneID="cla-lr-Bpq">
             <objects>
-                <tableViewController id="ahs-bw-bGb" customClass="FavoriteRecipesTableViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ahs-bw-bGb" customClass="FavoriteRecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6mx-h3-1CO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,7 +136,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jlT-Sw-vVx" kind="show" id="2dN-TC-qJm"/>
+                                    <segue destination="jlT-Sw-vVx" kind="presentation" modalPresentationStyle="fullScreen" id="2dN-TC-qJm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -148,12 +149,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cW9-ba-ak5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="864"/>
+            <point key="canvasLocation" x="2083" y="864"/>
         </scene>
         <!--Dish type-->
         <scene sceneID="YLb-5u-hed">
             <objects>
-                <tableViewController storyboardIdentifier="RecipesTableViewController" id="WOd-OH-YkO" customClass="RecipesTableViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RecipesTableViewController" id="WOd-OH-YkO" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="U8I-7j-S8b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,7 +172,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jlT-Sw-vVx" kind="show" id="W4U-jN-gLH"/>
+                                    <segue destination="jlT-Sw-vVx" kind="presentation" identifier="showDetail" modalPresentationStyle="fullScreen" id="W4U-jN-gLH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -184,12 +185,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8jV-Gg-XH3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2029" y="92"/>
+            <point key="canvasLocation" x="1543" y="92"/>
         </scene>
         <!--Detail Recipe View Controller-->
         <scene sceneID="DVt-jn-6KZ">
             <objects>
-                <viewController id="jlT-Sw-vVx" customClass="DetailRecipeViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jlT-Sw-vVx" customClass="DetailRecipeViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jIo-pV-Yw3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,7 +203,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="92o-mU-pIi">
-                                <rect key="frame" x="16" y="250" width="382" height="547"/>
+                                <rect key="frame" x="16" y="250" width="382" height="596"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgQ-ff-1tG">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="44.5"/>
@@ -221,7 +222,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaK-YB-1QC">
-                                        <rect key="frame" x="0.0" y="78" width="382" height="469"/>
+                                        <rect key="frame" x="0.0" y="78" width="382" height="518"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDe-9V-QAL">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
@@ -256,31 +257,58 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="sUy-1w-aey">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zog-ww-uzd">
+                                <rect key="frame" x="362.5" y="44" width="35.5" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23" scale="default" weight="semibold"/>
+                                </state>
+                                <connections>
+                                    <action selector="favoriteButtonPressed:" destination="jlT-Sw-vVx" eventType="touchUpInside" id="Owa-py-7DG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6x-vb-A2m">
+                                <rect key="frame" x="16" y="44" width="21.5" height="30"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="chevron.backward" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="29"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButton" destination="jlT-Sw-vVx" eventType="touchUpInside" id="38B-Ja-gPE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hCb-fW-AiV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="zog-ww-uzd" firstAttribute="top" secondItem="hCb-fW-AiV" secondAttribute="top" id="2oB-mL-vCB"/>
                             <constraint firstItem="92o-mU-pIi" firstAttribute="leading" secondItem="hCb-fW-AiV" secondAttribute="leading" constant="16" id="3lh-Dw-Z0C"/>
                             <constraint firstItem="hCb-fW-AiV" firstAttribute="bottom" secondItem="92o-mU-pIi" secondAttribute="bottom" constant="16" id="6XA-bL-vp6"/>
+                            <constraint firstItem="hCb-fW-AiV" firstAttribute="trailing" secondItem="zog-ww-uzd" secondAttribute="trailing" constant="16" id="EgT-NY-hei"/>
                             <constraint firstItem="ifA-d6-Oab" firstAttribute="leading" secondItem="jIo-pV-Yw3" secondAttribute="leading" id="Ham-e5-1OC"/>
                             <constraint firstItem="sUy-1w-aey" firstAttribute="centerY" secondItem="jIo-pV-Yw3" secondAttribute="centerY" id="Nkj-Wk-OYl"/>
                             <constraint firstItem="ifA-d6-Oab" firstAttribute="top" secondItem="jIo-pV-Yw3" secondAttribute="top" id="Qte-ZC-6yi"/>
+                            <constraint firstItem="x6x-vb-A2m" firstAttribute="top" secondItem="hCb-fW-AiV" secondAttribute="top" id="Tlz-FN-lbh"/>
                             <constraint firstItem="hCb-fW-AiV" firstAttribute="trailing" secondItem="92o-mU-pIi" secondAttribute="trailing" constant="16" id="Vxw-Ro-uFY"/>
                             <constraint firstItem="ifA-d6-Oab" firstAttribute="trailing" secondItem="jIo-pV-Yw3" secondAttribute="trailing" id="a2A-a5-6pz"/>
                             <constraint firstItem="92o-mU-pIi" firstAttribute="top" secondItem="ifA-d6-Oab" secondAttribute="bottom" constant="8" id="tLf-he-lUk"/>
                             <constraint firstItem="sUy-1w-aey" firstAttribute="centerX" secondItem="jIo-pV-Yw3" secondAttribute="centerX" id="uFv-6X-f9u"/>
+                            <constraint firstItem="x6x-vb-A2m" firstAttribute="leading" secondItem="hCb-fW-AiV" secondAttribute="leading" constant="16" id="wfl-Mc-JId"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="PKh-2W-4Ty">
                         <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="GnN-LO-8Is">
                             <color key="tintColor" systemColor="systemRedColor"/>
                             <connections>
-                                <action selector="favoriteAction:" destination="jlT-Sw-vVx" id="Jre-uW-RBc"/>
+                                <action selector="favoriteButtonPressed:" destination="jlT-Sw-vVx" id="Jre-uW-RBc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="sUy-1w-aey" id="VTD-9h-75b"/>
+                        <outlet property="favoriteButton" destination="zog-ww-uzd" id="tFK-Dm-EOi"/>
                         <outlet property="ingridientsLabel" destination="nXF-Uu-rNW" id="0Vs-uJ-5TI"/>
                         <outlet property="recipeImageView" destination="ifA-d6-Oab" id="7LF-rH-LV9"/>
                         <outlet property="scrollView" destination="aaK-YB-1QC" id="ObA-fh-8X6"/>
@@ -290,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dyi-fS-Z7l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028.985507246377" y="863.83928571428567"/>
+            <point key="canvasLocation" x="2357.971014492754" y="91.741071428571431"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xrb-yV-w6M">
@@ -341,6 +369,7 @@
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>

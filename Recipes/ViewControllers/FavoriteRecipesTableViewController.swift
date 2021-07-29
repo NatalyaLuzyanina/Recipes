@@ -14,20 +14,23 @@ class FavoriteRecipesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.rowHeight = 150
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) 
         favoriteRecipes = StorageManager.shared.realm.objects(Recipe.self)
         tableView.reloadData()
     }
     
     // MARK: - TableViewDelegate
+    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
         guard let recipe = favoriteRecipes?[indexPath.row] else { return nil }
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
+            UserDefaults.standard.removeObject(forKey: recipe.title)
             StorageManager.shared.delete(recipe: recipe)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }

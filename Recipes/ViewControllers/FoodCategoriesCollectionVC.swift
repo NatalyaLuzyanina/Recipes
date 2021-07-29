@@ -11,9 +11,14 @@ class FoodCategoriesCollectionVC: UICollectionViewController {
 
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-  
     private let categories = Category.allCases
-
+    private var searchController: UISearchController?
+   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createSearch()
+    }
+  
     // MARK: - UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -21,7 +26,10 @@ class FoodCategoriesCollectionVC: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCell", for: indexPath) as? FoodCategoryCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "FoodCell",
+                for: indexPath
+        ) as? FoodCategoryCell else { return UICollectionViewCell() }
 
         let category = categories[indexPath.item]
         cell.setCell(with: category)
@@ -31,6 +39,7 @@ class FoodCategoriesCollectionVC: UICollectionViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
         guard let indexPath = collectionView.indexPathsForSelectedItems else { return }
         let dishType = categories[indexPath.first?.item ?? 0]
         
@@ -38,16 +47,32 @@ class FoodCategoriesCollectionVC: UICollectionViewController {
         recipesVC.dishType = dishType
         recipesVC.title = dishType.rawValue
     }
+    
+    // MARK: - Private Methods
+    
+    private func createSearch() {
+        
+        let recipeSearchVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "RecipesTableViewController") as? RecipesTableViewController
+        searchController = UISearchController(searchResultsController: recipeSearchVC)
+        
+        if let searchController = searchController {
+            searchController.searchResultsUpdater = recipeSearchVC
+            searchController.obscuresBackgroundDuringPresentation = false
+            searchController.searchBar.placeholder = "Search"
+            navigationItem.searchController = searchController
+            definesPresentationContext = true
+        }
+    }
 }
+
+// MARK: - Extensions
 
 extension FoodCategoriesCollectionVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //сумма расстояний между объектами + отступы от краев
+        
         let paddingWidht: CGFloat = 20 * (itemsPerRow + 1)
-        // ширина окна - ширина всех отступов (доступное расстояние)
         let availableWidth =  collectionView.frame.width - paddingWidht
-        // ширина объектов
         let itemWidth = availableWidth / itemsPerRow
         
         return CGSize(width: itemWidth, height: itemWidth)

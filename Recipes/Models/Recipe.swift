@@ -18,6 +18,7 @@ class Recipe: Object, Decodable {
     let dishTypes: [String]?
     let instructions: String?
     let analyzedInstructions: [AnalyzedInstruction]?
+   // @objc dynamic var favorite = 1
 }
 
 struct AnalyzedInstruction: Decodable {

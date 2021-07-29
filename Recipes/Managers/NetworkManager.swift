@@ -14,7 +14,7 @@ class NetworkManager {
     
     func fetchRecipes(dishType: Category, completion: @escaping (([Recipe]) -> Void)) {
         
-        guard let url = URL(string: APIManager.shared.createURL(with: dishType)) else { print("no url"); return }
+        guard let url = URL(string: APIManager.shared.createURL(with: dishType)) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, errror) in
             guard let data = data else {
@@ -49,6 +49,24 @@ class NetworkManager {
             }
         }.resume()
     }
-     
+    
+    func fetchRecipes(query: String, completion: @escaping (([Recipe]) -> Void)) {
+        
+        guard let url = URL(string: APIManager.shared.createURL(forSearch: query)) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, errror) in
+            guard let data = data else {
+                print(errror?.localizedDescription ?? "No error description")
+                return
+            }
+            
+            do {
+                let recipes = try JSONDecoder().decode(Welcome.self, from: data)
+                completion(recipes.results)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }.resume()
+    }
     
 }

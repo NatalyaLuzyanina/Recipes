@@ -124,11 +124,11 @@
 		C1C6161526AEDFFB006D3B11 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C1C6160826AEDF80006D3B11 /* DetailRecipeViewController.swift */,
-				C1C6160A26AEDF80006D3B11 /* FavoriteRecipesTableViewController.swift */,
 				C1C6160726AEDF80006D3B11 /* FoodCategoriesCollectionVC.swift */,
 				C1C6160926AEDF80006D3B11 /* FoodCategoryCell.swift */,
 				C1C6160B26AEDF80006D3B11 /* RecipesTableVC.swift */,
+				C1C6160A26AEDF80006D3B11 /* FavoriteRecipesTableViewController.swift */,
+				C1C6160826AEDF80006D3B11 /* DetailRecipeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
