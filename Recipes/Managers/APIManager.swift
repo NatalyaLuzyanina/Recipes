@@ -11,7 +11,7 @@ class APIManager {
     static let shared = APIManager()
     private init() {}
     
-    private let apiKey = "bc3d66946be64a82a1d7777a5208c18a" //"7bd8cced65934b6499ea5beebd2e8b0a"
+    private let apiKey = "7bd8cced65934b6499ea5beebd2e8b0a" //"bc3d66946be64a82a1d7777a5208c18a" 
 
     func createURL(with dishType: Category) -> String {
         let dishType = convertSpace(in: dishType)
