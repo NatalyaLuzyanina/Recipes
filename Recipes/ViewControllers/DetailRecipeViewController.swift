@@ -61,13 +61,11 @@ class DetailRecipeViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    
     private func setFavoriteButton(_ mark: String) {
         favoriteButton.setImage(UIImage(systemName: mark), for: .normal)
     }
     
     private func getRecipes() {
-        
         NetworkManager.shared.fetchRecipe(recipe: recipe) { recipe in
             DispatchQueue.main.async {
                 self.recipe = recipe
@@ -78,30 +76,37 @@ class DetailRecipeViewController: UIViewController {
     }
     
     private func setContent() {
-        
         titleLabel.text = recipe.title
         recipeImageView.image = ImageManager.shared.getImage(from: recipe.image)
+        setIngredients()
+        setSteps()
+    }
+    
+    private func setIngredients() {
+        var ingredientss: [String] = []
         
-        var steps: [String] = []
-        var ingredients: [String] = []
-        
-        guard let analyzedInstructions = recipe.analyzedInstructions else { return }
-        for analyzedInstruction in analyzedInstructions {
-            
-            for step in analyzedInstruction.steps! {
-                for ingridient in step.ingredients! {
-                    ingredients.append(ingridient.name ?? "")
-                }
-                steps.append(step.step ?? "")
-            }
+        guard let ingredients = recipe.extendedIngredients else { return }
+        for ingredient in ingredients {
+            ingredientss.append(ingredient.original ?? "")
         }
         
-        let ingredientsDescription = ingredients
+        let ingredientsDescription = ingredientss
             .map({ "\($0)" })
             .joined(separator: ", ")
         ingridientsLabel.text = ingredientsDescription
         ingridientsLabel.layer.cornerRadius = 7
         ingridientsLabel.layer.masksToBounds = true
+    }
+    
+    private func setSteps() {
+        var steps: [String] = []
+        
+        guard let analyzedInstructions = recipe.analyzedInstructions else { return }
+        for analyzedInstruction in analyzedInstructions {
+            for step in analyzedInstruction.steps! {
+                steps.append(step.step ?? "")
+            }
+        }
         
         let stepsDescription = steps
             .map(({ "🧑🏽‍🍳 \($0)" }))

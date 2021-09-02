@@ -18,7 +18,7 @@ class Recipe: Object, Decodable {
     let dishTypes: [String]?
     let instructions: String?
     let analyzedInstructions: [AnalyzedInstruction]?
-   // @objc dynamic var favorite = 1
+    let extendedIngredients: [Ingredient]?
 }
 
 struct AnalyzedInstruction: Decodable {
@@ -32,12 +32,12 @@ struct Step: Decodable {
 }
 
 struct Ingredient: Decodable {
-    let name: String?
+    let original: String?
     let image: String?
 }
 
 
-enum Category: String, CaseIterable, Codable {
+enum Category: String, CaseIterable {
     case firstDish = "Main course"
     case secondDish = "Side dish"
     case dessert = "Dessert"
